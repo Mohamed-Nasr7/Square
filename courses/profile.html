@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+    
+    .modal-body a{
+        
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        margin: 10px auto 35px;
+        background-color: #ABCEFF;
+        text-decoration: none;
+        padding: 10px;
+        color: #2F5180;
+        border-radius: 5px;
+        
+    }
+    
+    
+    .coursediv{
+        
+        font-size: 1.8em;
+        
+    }
+    
+    
+    i{
+        margin: 10px 5px 20px
+    }
+    
+</style>
+
+
+
+</head>
+<body>
+
+<h2 style="text-align:center">User Profile Card</h2>
+
+<div class="card">
+  <img src="me3.jpg" alt="Mostafa" style="width:70%" class="center">
+  
+  <h1 id="name"></h1>
+  
+  <p class="title">Cairo, Egypt</p>
+  
+  <div>
+   
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    
+  </div>
+  
+  <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal" >Display my Courses</button>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Courses</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group" id="courseCont">
+                    
+                    
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+</div>
+
+
+    
+<script src="js/JQuery-3.3.1.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+    <script>
+        
+        if(localStorage.key(0) != "register"){
+            document.getElementById("name").innerText = localStorage.key(0);
+        }
+        container = document.getElementById("courseCont");
+        
+            for(i = 0; i < JSON.parse(localStorage.getItem(localStorage.key(0))).length ; i++){
+                
+                coursediv = document.createElement("div");
+                coursediv.setAttribute("class","coursediv")
+                exam = document.createElement("a");
+                exam.setAttribute("href","Exam.html");
+                exam.innerText = "Exam";
+                
+                if(localStorage.key(0) != "register"){
+                coursediv.innerHTML += JSON.parse(localStorage.getItem(localStorage.key(0)))[i] + "<br>";
+                container.appendChild(coursediv);
+                container.appendChild(exam);
+                }
+                
+            }
+        
+        
+        
+    </script>
+
+</body>
+</html>
+
+
